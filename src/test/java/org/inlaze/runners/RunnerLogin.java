@@ -6,7 +6,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(CucumberWithSerenity.class)
 @CucumberOptions(
-        features = "src/test/resources/features/registro.feature",
+        features = "src/test/resources/features",
         glue = "org.inlaze.stepdefinitions", //steps
         snippets = CucumberOptions.SnippetType.CAMELCASE//como se escriben los test
 )

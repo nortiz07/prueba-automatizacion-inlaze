@@ -11,7 +11,7 @@ import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.*;
 import static org.inlaze.ui.SignUplaze.*;
 
 @Slf4j
-public class TaskSign implements Task {
+public class TaskSignUp implements Task {
 
     private final String nombre;
     private final String email;
@@ -19,7 +19,7 @@ public class TaskSign implements Task {
 
     private final String confirmacion;
 
-    public TaskSign(String nombre, String email, String password, String confirmacion) {
+    public TaskSignUp(String nombre, String email, String password, String confirmacion) {
         this.nombre = nombre;
         this.email = email;
         this.password = password;
@@ -59,7 +59,7 @@ public class TaskSign implements Task {
         log.info("Campo confirma");
     }
 
-    public static TaskSign registro(String nombre, String email, String password, String confirmacion) {
-        return new TaskSign(nombre, email, password, confirmacion);
+    public static TaskSignUp registro(String nombre, String email, String password, String confirmacion) {
+        return new TaskSignUp(nombre, email, password, confirmacion);
     }
 }

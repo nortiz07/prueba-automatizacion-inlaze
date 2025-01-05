@@ -13,7 +13,7 @@ import org.inlaze.questions.ValidateElementsSignUp;
 import org.inlaze.task.TaskAbrirWeb;
 import org.inlaze.task.TaskBtnRegistrar;
 import org.inlaze.task.TaskIngresoRegistro;
-import org.inlaze.task.TaskSign;
+import org.inlaze.task.TaskSignUp;
 
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static net.serenitybdd.screenplay.actors.OnStage.*;
@@ -43,7 +43,7 @@ public class StepRegistroExitoso {
     public void enterYourDataCorrectly() {
         String email = RandomEmail.getInstance().getEmail();
         OnStage.theActorInTheSpotlight().attemptsTo(
-                TaskSign.registro("Oscar P", email, "Password1", "Password1")
+                TaskSignUp.registro("Oscar P", email, "Password1", "Password1")
         );
         log.info("Termino el registro ");
     }

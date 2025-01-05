@@ -6,9 +6,8 @@ import lombok.extern.slf4j.Slf4j;
 import net.serenitybdd.screenplay.actors.OnStage;
 import org.inlaze.helpers.RandomEmail;
 import org.inlaze.questions.ButtonEnable;
-import org.inlaze.questions.ValidateElementsSignUp;
 import org.inlaze.questions.ValidateNotMatch;
-import org.inlaze.task.TaskSign;
+import org.inlaze.task.TaskSignUp;
 
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
@@ -22,7 +21,7 @@ public class StepErroresRegistro {
     @And("ingresa un nombre incompleto")
     public void enterAnIncompleteName() {
         OnStage.theActorInTheSpotlight().attemptsTo(
-                TaskSign.registro(
+                TaskSignUp.registro(
                         "Prueba", this.email, "Password1", "Password1")
         );
     }
@@ -30,14 +29,14 @@ public class StepErroresRegistro {
     @And("ingresa una contraseña incorrecta")
     public void enterAnIncompletePassword() {
         OnStage.theActorInTheSpotlight().attemptsTo(
-                TaskSign.registro("Prueba P", this.email, "Pass", "Pass")
+                TaskSignUp.registro("Prueba P", this.email, "Pass", "Pass")
         );
     }
 
     @And("ingresa un correo existente")
     public void enterAnExistingEmail() {
         OnStage.theActorInTheSpotlight().attemptsTo(
-                TaskSign.registro("Prueba P", this.email, "Pass", "Pass")
+                TaskSignUp.registro("Prueba P", this.email, "Password1", "Password1")
         );
     }
 
@@ -49,7 +48,7 @@ public class StepErroresRegistro {
 
     @And("ingresa una contraseña y una confirmación diferente")
     public void enterPasswordAndDifferentConfirmation() {
-        OnStage.theActorInTheSpotlight().attemptsTo(TaskSign.registro(
+        OnStage.theActorInTheSpotlight().attemptsTo(TaskSignUp.registro(
                 "Prueba P", this.email, "Pass", "Password1"));
     }
 
