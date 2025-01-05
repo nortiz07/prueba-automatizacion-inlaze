@@ -1,25 +1,27 @@
 package org.inlaze.stepdefinitions;
 
 import io.cucumber.java.Before;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import lombok.extern.slf4j.Slf4j;
 import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.actors.OnlineCast;
-import org.inlaze.questions.ButtonEnable;
+import org.inlaze.helpers.RandomEmail;
 import org.inlaze.questions.ValidateElementsSignUp;
 import org.inlaze.task.TaskAbrirWeb;
+import org.inlaze.task.TaskBtnRegistrar;
 import org.inlaze.task.TaskIngresoRegistro;
 import org.inlaze.task.TaskSign;
 
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static net.serenitybdd.screenplay.actors.OnStage.*;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.equalTo;
 
 @Slf4j
-public class StepLogin {
+public class StepRegistroExitoso {
 
     @Before
     public void configuracionInicial() {
@@ -37,15 +39,18 @@ public class StepLogin {
         OnStage.theActorInTheSpotlight().attemptsTo(new TaskIngresoRegistro());
     }
 
-    @When("ingresa sus datos correctamente")
+    @And("ingresa sus datos correctamente")
     public void enterYourDataCorrectly() {
+        String email = RandomEmail.getInstance().getEmail();
         OnStage.theActorInTheSpotlight().attemptsTo(
-                TaskSign.registroExitoso("Oscar P", "oscar1@ejemplo.com", "Password1")
+                TaskSign.registro("Oscar P", email, "Password1", "Password1")
         );
+        log.info("Termino el registro ");
     }
 
     @Then("debería poder registrar sus datos correctamente")
     public void youShouldBeAbleToRegisterYourDataCorrectly() {
+        theActorInTheSpotlight().attemptsTo(new TaskBtnRegistrar());
         //String palabraEsperada = "Test";
         log.info("Encontro: {}", ValidateElementsSignUp.validateElementsSignUp().answeredBy(theActorInTheSpotlight()));
         //log.info("Esperada: {}", palabraEsperada);
@@ -53,23 +58,5 @@ public class StepLogin {
                 ValidateElementsSignUp.validateElementsSignUp(), equalTo("Successful registration!")));
     }
 
-    @When("ingresa un nombre incompleto")
-    public void enterAnIncompleteName() {
-        OnStage.theActorInTheSpotlight().attemptsTo(
-                TaskSign.registroExitoso("Prueba", "oscar1@ejemplo.com", "Password1")
-        );
-    }
-    @Then("no debería habilitarse el botón de registro")
-    public void registrationButtonShouldNotBeEnabled() {
-        log.info("Valor del botón: {}", new ButtonEnable().answeredBy(OnStage.theActorInTheSpotlight()));
-        OnStage.theActorInTheSpotlight().should(seeThat(new ButtonEnable(), is("false")));
-    }
-
-    @When("ingresa una contraseña incorrecta")
-    public void enterAnIncompletePassword() {
-        OnStage.theActorInTheSpotlight().attemptsTo(
-                TaskSign.registroExitoso("Prueba P", "oscar1@ejemplo.com", "Pass")
-        );
-    }
 
 }

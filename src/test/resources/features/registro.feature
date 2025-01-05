@@ -25,7 +25,10 @@ Característica: Registro de usuario en Inlaze
 
   Escenario: registro de usuario fallido por contraseña diferente
     Cuando ingresa a la página de registro de Inlaze
-    Y ingresa un correo válido
-    Y ingresa una contraseña "Password1"
-    Y ingresa una confirmacion de contraseña diferente "Pass"
-    Entonces debería ver un mensaje de error "Passwords do not match"
+    Y ingresa una contraseña y una confirmación diferente
+    Entonces debería ver un mensaje de error
+
+  Escenario: registro de usuario fallido por correo ya existente
+    Cuando ingresa a la página de registro de Inlaze
+    Y ingresa un correo existente
+    Entonces no debería habilitarse el botón de registro

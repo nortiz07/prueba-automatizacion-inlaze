@@ -7,15 +7,15 @@ import net.serenitybdd.screenplay.Question;
 import static org.inlaze.ui.SignUplaze.BTN_SIGNUP;
 
 @Slf4j
-public class ButtonEnable implements Question<Boolean> {
+public class ButtonEnable implements Question<String> {
     @Override
-    public Boolean answeredBy(Actor actor) {
+    public String answeredBy(Actor actor) {
         // Verifica si el botón está habilitado y lo retorna como verdadero o falso
-        boolean isEnabled = BTN_SIGNUP.resolveFor(actor).isEnabled();
+        boolean visible = BTN_SIGNUP.resolveFor(actor).isEnabled();
 
         // Aquí puedes agregar un log si es necesario para ver el estado del botón
-        log.info("El botón de registro está habilitado: {}", isEnabled);
+        log.info("El botón de registro está habilitado: {}", visible);
 
-        return isEnabled;  // Retorna true si está habilitado, false si no lo está
+        return String.valueOf(visible);  // Retorna true si está habilitado, false si no lo está
     }
 }
