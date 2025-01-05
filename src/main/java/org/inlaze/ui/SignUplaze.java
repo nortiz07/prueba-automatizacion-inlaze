@@ -13,9 +13,6 @@ public class SignUplaze extends PageObject {
     public static final Target CAMPO_EMAIL = Target.the("Campo email")
             .locatedBy("//*[@id=\"email\"]");
 
-    public static final Target BTN_OJO = Target.the("Boton ojo")
-            .locatedBy("//*[@id=\"password\"]/div/button");
-
     public static final Target CAMPO_PASSWORD = Target.the("Campo password")
             .locatedBy("//app-password[@id='password']//input[@type='password']");
 
@@ -23,9 +20,13 @@ public class SignUplaze extends PageObject {
             .locatedBy("//app-password[@id='confirm-password']//input[@type='password']");
 
     public static final Target BTN_SIGNUP = Target.the("Botón crear usuario")
-            .locatedBy("//button[text()='Sign up']\"");
+            .locatedBy("//button[text()=' Sign up ']");
 
     public static final Target MENSAJE_EXITOSO = Target.the("Mensaje registro exitoso")
-            .locatedBy("div[role='alert'].flex.items-center.justify-between");
+            .locatedBy("//div[@role='alert']//div[contains(@class, 'text-sm')]");
+
+    public static final Target MENSAJE_PASS_NOTMATCH = Target.the(
+            "Mensaje de error contraseñas no coinciden")
+                    .locatedBy("//span[contains(@class, 'label-text-alt') and contains(@class, 'text-error')]");
 
 }
