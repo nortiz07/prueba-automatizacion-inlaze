@@ -18,10 +18,16 @@ Característica: Registro de usuario en Inlaze
     Y ingresa un nombre incompleto
     Entonces no debería habilitarse el botón de registro
 
-  Escenario: registro de usuario con contraseña incorrecta
+  Esquema del escenario: registro de usuario con contraseña incorrecta
     Cuando ingresa a la página de registro de Inlaze
-    Y ingresa una contraseña incorrecta
+    Y ingresa una "<contrasena>" y "<confirmacion>" incorrecta
     Entonces no debería habilitarse el botón de registro
+
+    Ejemplos:
+      | contrasena | confirmacion |
+      | Pass       | Pass         |
+      | password1  | password1    |
+      | Pass1      | Pass1        |
 
   Escenario: registro de usuario fallido por contraseña diferente
     Cuando ingresa a la página de registro de Inlaze

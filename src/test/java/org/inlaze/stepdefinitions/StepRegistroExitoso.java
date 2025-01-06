@@ -11,9 +11,9 @@ import net.serenitybdd.screenplay.actors.OnlineCast;
 import org.inlaze.helpers.RandomEmail;
 import org.inlaze.questions.ValidateElementsSignUp;
 import org.inlaze.task.TaskAbrirWeb;
-import org.inlaze.task.TaskBtnRegistrar;
+import org.inlaze.task.TaskBtn;
 import org.inlaze.task.TaskIngresoRegistro;
-import org.inlaze.task.TaskSign;
+import org.inlaze.task.TaskSignUp;
 
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static net.serenitybdd.screenplay.actors.OnStage.*;
@@ -43,14 +43,15 @@ public class StepRegistroExitoso {
     public void enterYourDataCorrectly() {
         String email = RandomEmail.getInstance().getEmail();
         OnStage.theActorInTheSpotlight().attemptsTo(
-                TaskSign.registro("Oscar P", email, "Password1", "Password1")
+                TaskSignUp.registro("Oscar P", email, "Password1", "Password1")
         );
         log.info("Termino el registro ");
     }
 
     @Then("debería poder registrar sus datos correctamente")
     public void youShouldBeAbleToRegisterYourDataCorrectly() {
-        theActorInTheSpotlight().attemptsTo(new TaskBtnRegistrar());
+        String btnText = "Sign up";
+        theActorInTheSpotlight().attemptsTo(new TaskBtn(btnText));
         //String palabraEsperada = "Test";
         log.info("Encontro: {}", ValidateElementsSignUp.validateElementsSignUp().answeredBy(theActorInTheSpotlight()));
         //log.info("Esperada: {}", palabraEsperada);
