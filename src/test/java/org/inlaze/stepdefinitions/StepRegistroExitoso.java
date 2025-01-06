@@ -11,7 +11,7 @@ import net.serenitybdd.screenplay.actors.OnlineCast;
 import org.inlaze.helpers.RandomEmail;
 import org.inlaze.questions.ValidateElementsSignUp;
 import org.inlaze.task.TaskAbrirWeb;
-import org.inlaze.task.TaskBtnRegistrar;
+import org.inlaze.task.TaskBtn;
 import org.inlaze.task.TaskIngresoRegistro;
 import org.inlaze.task.TaskSignUp;
 
@@ -50,7 +50,8 @@ public class StepRegistroExitoso {
 
     @Then("debería poder registrar sus datos correctamente")
     public void youShouldBeAbleToRegisterYourDataCorrectly() {
-        theActorInTheSpotlight().attemptsTo(new TaskBtnRegistrar());
+        String btnText = "Sign up";
+        theActorInTheSpotlight().attemptsTo(new TaskBtn(btnText));
         //String palabraEsperada = "Test";
         log.info("Encontro: {}", ValidateElementsSignUp.validateElementsSignUp().answeredBy(theActorInTheSpotlight()));
         //log.info("Esperada: {}", palabraEsperada);

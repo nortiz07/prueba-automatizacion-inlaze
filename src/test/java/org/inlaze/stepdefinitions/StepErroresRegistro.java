@@ -26,10 +26,10 @@ public class StepErroresRegistro {
         );
     }
 
-    @And("ingresa una contraseña incorrecta")
-    public void enterAnIncompletePassword() {
+    @And("ingresa una {string} y {string} incorrecta")
+    public void enterAnIncompletePassword(String password, String password2) {
         OnStage.theActorInTheSpotlight().attemptsTo(
-                TaskSignUp.registro("Prueba P", this.email, "Pass", "Pass")
+                TaskSignUp.registro("Prueba P", this.email, password, password2)
         );
     }
 
@@ -42,8 +42,9 @@ public class StepErroresRegistro {
 
     @Then("no debería habilitarse el botón de registro")
     public void registrationButtonShouldNotBeEnabled() {
-        log.info("Valor del botón: {}", new ButtonEnable().answeredBy(OnStage.theActorInTheSpotlight()));
-        OnStage.theActorInTheSpotlight().should(seeThat(new ButtonEnable(), is("false")));
+        String btnHabilitado = "Sing up";
+        log.info("Valor del botón: {}", new ButtonEnable(btnHabilitado).answeredBy(OnStage.theActorInTheSpotlight()));
+        OnStage.theActorInTheSpotlight().should(seeThat(new ButtonEnable(btnHabilitado), is("false")));
     }
 
     @And("ingresa una contraseña y una confirmación diferente")

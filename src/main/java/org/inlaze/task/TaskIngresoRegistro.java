@@ -6,14 +6,14 @@ import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.waits.WaitUntil;
 
 import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isEnabled;
-import static org.inlaze.ui.SignIn.BTN_SIGNIN;
+import static org.inlaze.ui.SignIn.BTN_SIGNUP;
 
 public class TaskIngresoRegistro implements Task {
     @Override
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
-                WaitUntil.the(BTN_SIGNIN, isEnabled()).forNoMoreThan(10).seconds(),
-                Click.on(BTN_SIGNIN)
+                WaitUntil.the(BTN_SIGNUP, isEnabled()).forNoMoreThan(10).seconds(),
+                Click.on(BTN_SIGNUP)
         );
     }
 }

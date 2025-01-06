@@ -8,6 +8,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = "src/test/resources/features",
         glue = "org.inlaze.stepdefinitions", //steps
+        plugin = "pretty",
         snippets = CucumberOptions.SnippetType.CAMELCASE//como se escriben los test
 )
 
