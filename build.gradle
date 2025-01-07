@@ -1,14 +1,13 @@
 buildscript {
-    ext.serenityCoreVersion = '3.3.4' // Usar una versión consistente de Serenity
+    ext.serenityCoreVersion = '3.3.4'
     repositories {
         mavenCentral()
     }
     dependencies {
-        classpath("net.serenity-bdd:serenity-gradle-plugin:${serenityCoreVersion}")
-        classpath "net.serenity-bdd:serenity-single-page-report:${serenityCoreVersion}"
+        classpath("net.serenity-bdd:serenity-gradle-plugin:$serenityCoreVersion")
+        classpath "net.serenity-bdd:serenity-single-page-report:$serenityCoreVersion"
     }
 }
-
 plugins {
     id "net.serenity-bdd.serenity-gradle-plugin" version "${serenityCoreVersion}"
     id 'java'
@@ -16,7 +15,7 @@ plugins {
     id 'idea'
 }
 
-defaultTasks 'clean', 'test', 'aggregate'
+defaultTasks 'clean','test','aggregate'
 apply plugin: 'net.serenity-bdd.serenity-gradle-plugin'
 
 group 'org.inlaze'
@@ -34,7 +33,7 @@ repositories {
 
 ext {
     slf4jVersion = '1.7.7'
-    serenityCoreVersion = '3.3.4' // Usar una versión consistente de Serenity
+    serenityCoreVersion = '3.3.4'
     serenityCucumberVersion = '3.3.4'
     junitVersion = '5.8.2'
     assertJVersion = '3.22.0'
@@ -44,8 +43,7 @@ ext {
 }
 
 dependencies {
-    // Serenity y otras dependencias necesarias
-    testImplementation("net.serenity-bdd:serenity-core:${serenityCoreVersion}") {
+    testImplementation ("net.serenity-bdd:serenity-core:${serenityCoreVersion}"){
         exclude group: 'org.apache.groovy', module: 'groovy'
     }
     implementation "net.serenity-bdd:serenity-ensure:${serenityCoreVersion}"
@@ -55,13 +53,11 @@ dependencies {
     implementation "net.serenity-bdd:serenity-screenplay-webdriver:${serenityCoreVersion}"
     implementation "net.serenity-bdd:serenity-screenplay-rest:${serenityCoreVersion}"
 
-    // Dependencias de pruebas
     implementation "org.junit.jupiter:junit-jupiter-api:${junitVersion}"
     implementation "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
     implementation "org.assertj:assertj-core:${assertJVersion}"
     implementation "ch.qos.logback:logback-classic:${logbackVersion}"
 
-    // Lombok
     compileOnly "org.projectlombok:lombok:${lombokVersion}"
     annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
     testCompileOnly "org.projectlombok:lombok:${lombokVersion}"
@@ -78,11 +74,11 @@ dependencies {
 test {
     useJUnitPlatform()
     testLogging.showStandardStreams = true
-    systemProperties System.getProperties()
+    systemProperties System.getProperties()  // Esto mantiene las propiedades del sistema si las hay
 }
 
 serenity {
-    testRoot = "org.screenplay.runners"
+    testRoot = "org.inlaze.runners"
     requirementsBaseDir = "src/test/resources/features"
     reports = ["single-page-html"]
 }

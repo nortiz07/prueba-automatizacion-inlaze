@@ -16,14 +16,14 @@ Antes de ejecutar el proyecto, asegúrate de tener las siguientes herramientas i
 1. **Clonar el Repositorio:**
 
    ```bash
-   gh repo clone nortiz07/prueba-automatizacion-inlaze
-   cd prueba-automatizacion-inlaze
+   $ gh repo clone nortiz07/prueba-automatizacion-inlaze
+   $ cd prueba-automatizacion-inlaze
 
 2. **Instalar Dependencias:**
 
 El proyecto usa Gradle para gestionar las dependencias. Asegúrate de tener Gradle instalado y ejecuta el siguiente comando para instalar todas las dependencias necesarias:
 
-        gradle clean build
+        $ gradle clean build
 
 3. **Configuración del Entorno:**
 
@@ -45,19 +45,19 @@ Para ejecutar las pruebas, puedes usar Gradle. Aquí te dejo algunas opciones:
 
 Ejecutar todas las pruebas:
 
-      gradle clean verify
+      $ gradle clean verify
 
 Ejecutar pruebas específicas:
 
-    Si deseas ejecutar un conjunto específico de pruebas, puedes utilizar un      Tag o Etiqueta para seleccionarlas. Ejemplo:
+Si deseas ejecutar un conjunto específico de pruebas, puedes utilizar un      Tag o Etiqueta para seleccionarlas. Ejemplo:
 
-      gradle clean verify -Dcucumber.options="--tags @login"
+      $ gradle test --tests org.inlaze.runners.RunnerLogin
 
 Ejecutar Pruebas con un Navegador Específico:
 
-    Si necesitas ejecutar las pruebas en un navegador específico, puedes          configurar el parámetro serenity.driver en el archivo serenity.properties,     o puedes especificar el navegador directamente al ejecutar el comando de      Gradle:
+Si necesitas ejecutar las pruebas en un navegador específico, puedes          configurar el parámetro serenity.driver en el archivo serenity.properties,     o puedes especificar el navegador directamente al ejecutar el comando de      Gradle:
         
-      gradle clean verify -Dwebdriver.driver=chrome
+      $ gradle clean test -Dwebdriver.driver=edge
 
 5. **Generación de Reportes**
 
