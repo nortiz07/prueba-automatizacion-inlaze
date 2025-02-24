@@ -43,7 +43,7 @@ public class StepRegistroExitoso {
     public void enterYourDataCorrectly() {
         String email = RandomEmail.getInstance().getEmail();
         OnStage.theActorInTheSpotlight().attemptsTo(
-                TaskSignUp.registro("Oscar P", email, "Password1", "Password1")
+                TaskSignUp.registro("Oscar P", "oscar@oscar.com", "Password1", "Password1")
         );
         log.info("Termino el registro ");
     }

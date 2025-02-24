@@ -35,6 +35,7 @@ public class StepErroresInicio {
             log.info("Que llego si lo estoy haciendo bien? {}", email);
     }
 
+    //ejercicio git
     @Then("no debería habilitarse el botón de incio sesion")
     public void registrationButtonShouldNotBeEnabled() {
         String btnHabilitado = "Sign in";

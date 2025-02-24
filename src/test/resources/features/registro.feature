@@ -34,7 +34,25 @@ Característica: Registro de usuario en Inlaze
     Y ingresa una contraseña y una confirmación diferente
     Entonces debería ver un mensaje de error
 
-  Escenario: registro de usuario fallido por correo ya existente
+  Esquema del escenario: registro de usuario fallido por correo ya existente
     Cuando ingresa a la página de registro de Inlaze
-    Y ingresa un correo existente
+    Y ingresa un "<correo>" existente y incorrecto
     Entonces no debería habilitarse el botón de registro
+
+    Ejemplos:
+      | correo          |
+      | oscar@oscar.com |
+      | oscar@          |
+      | oscar.co        |
+
+  Esquema del escenario: Registro con datos incompletos
+    Cuando ingresa a la página de registro de Inlaze
+    Y no proporciona alguno de estos campos "<nombre>","<email>", "<contrasena>", "<confirmacion>"
+    Entonces no debería habilitarse el botón de registro
+
+    Ejemplos:
+      | nombre  | email           | contrasena | confirmacion |
+      |         | oscar@oscar.com | Password1  | Password1    |
+      | Oscar P |                 | Password1  | Password1    |
+      | Oscar P | oscar@oscar.com |            | Password1    |
+      | Oscar P | oscar@oscar.com | Password1  |              |
