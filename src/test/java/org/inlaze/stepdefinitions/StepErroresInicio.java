@@ -21,7 +21,7 @@ public class StepErroresInicio {
         setTheStage(new OnlineCast());
     }
 
-    //revision no quiero que cambien esto por favor
+    //revision no quiero que cambien esto por favor hol
     @Cuando("proporciona su {string} y {string}")
     public void provideYourEmailAndPassword(String email, String password) {
             log.info("Que llego {}", email);
