@@ -33,10 +33,17 @@ public class StepErroresRegistro {
         );
     }
 
-    @And("ingresa un correo existente")
-    public void enterAnExistingEmail() {
+    @And("ingresa un {string} existente y incorrecto")
+    public void enterAnExistingEmail(String correo) {
         OnStage.theActorInTheSpotlight().attemptsTo(
-                TaskSignUp.registro("Prueba P", this.email, "Password1", "Password1")
+                TaskSignUp.registro("Prueba P", correo, "Password1", "Password1")
+        );
+    }
+
+    @And("no proporciona alguno de estos campos {string},{string}, {string}, {string}")
+    public void doesNotProvideAnyOfTheseFields(String nombre,String correo,String password,String confirmacion) {
+        OnStage.theActorInTheSpotlight().attemptsTo(
+                TaskSignUp.registro(nombre, correo, password, confirmacion)
         );
     }
 

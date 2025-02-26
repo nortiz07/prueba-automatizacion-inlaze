@@ -26,6 +26,7 @@ public class StepErroresInicio {
         setTheStage(new OnlineCast());
     }
 
+    //revision
     @Cuando("proporciona su {string} y {string}")
     public void provideYourEmailAndPassword(String email, String password) {
             log.info("Que llego {}", email);
@@ -35,6 +36,7 @@ public class StepErroresInicio {
             log.info("Que llego si lo estoy haciendo bien? {}", email);
     }
 
+    //ejercicio git
     @Then("no debería habilitarse el botón de incio sesion")
     public void registrationButtonShouldNotBeEnabled() {
         String btnHabilitado = "Sign in";
